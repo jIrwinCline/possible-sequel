@@ -1,1 +1,17 @@
-Well done
+<h1 class="page-header">Possible Sequel</h1><br />
+
+<%= @response_one %>
+<h1>Title:</h1> <%= @title_one %>
+<h2>Actors:</h2> <%= @actors_one %>
+<h2>Plot:</h2> <%= @plot_one %>
+
+<%= @response_two %>
+<h1>Title:</h1> <%= @title_two %>
+<h2>Actors:</h2> <%= @actors_two %>
+<h2>Plot:</h2> <%= @plot_two %>
+
+<%= form_for [@prompt, @post] do |f| %>
+  <%= f.label "Explain it" %>
+  <%= f.text_area :body %>
+  <%= f.submit "Submit" %>
+<% end %>

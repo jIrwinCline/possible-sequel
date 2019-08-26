@@ -3,8 +3,10 @@ class MoviesController < ApplicationController
   include API
 
     def index
-      movie_one = "titanic"
-      movie_two = "inception"
+      @prompt = Prompt.find(params[:prompt_id])
+      @post = @prompt.post.new
+      movie_one = @prompt.movie_a
+      movie_two = @prompt.movie_b
       response_one = API::Interface.call(movie_one)
       response_two = API::Interface.call(movie_two)
       @response_one = JSON.parse(response_one)

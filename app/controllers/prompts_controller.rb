@@ -5,7 +5,22 @@ class PromptsController < ApplicationController
   end
 
   def index
+    random_num = ActiveRecord::Base.connection.execute("SELECT id FROM prompts ORDER BY random() LIMIT(1)").first
     @prompts = Prompt.all
+    @prompt = Prompt.find(random_num["id"])
+    @post = @prompt.posts.new
+    movie_one = @prompt.movie_a
+    movie_two = @prompt.movie_b
+    response_one = API::Interface.call(movie_one)
+    response_two = API::Interface.call(movie_two)
+    @response_one = JSON.parse(response_one)
+    @response_two = JSON.parse(response_two)
+    @title_one = JSON.parse(response_one)["Title"]
+    @title_two = JSON.parse(response_two)["Title"]
+    @actors_one = JSON.parse(response_one)["Actors"]
+    @actors_two = JSON.parse(response_two)["Actors"]
+    @plot_one = JSON.parse(response_one)["Plot"]
+    @plot_two = JSON.parse(response_two)["Plot"]
     render :index
   end
 

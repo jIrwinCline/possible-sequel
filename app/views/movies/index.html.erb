@@ -9,3 +9,10 @@
 <h1>Title:</h1> <%= @title_two %>
 <h2>Actors:</h2> <%= @actors_two %>
 <h2>Plot:</h2> <%= @plot_two %>
+
+
+<%= form_for [@prompt, @post] do |f| %>
+  <%= f.label "Explain it" %>
+  <%= f.text_area :body %>
+  <%= f.submit "Submit" %>
+<% end %>
