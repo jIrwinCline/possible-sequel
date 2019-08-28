@@ -31,17 +31,29 @@ describe 'prompt routes' do
     expect(page).to have_content('There are no prompts yet.')
   end
 
-  it 'creates a prompt' do
+  # it 'creates a prompt' do
+  #   visit ('/signin')
+  #   fill_in(:email, :with => 'test@test.com')
+  #   fill_in(:password, :with => 123456)
+  #   click_button('Sign in')
+  #   visit new_prompt_path
+  #   expect(page).to have_content('test@test.com')
+  #   fill_in('prompt[movie_a]', :with => 'Titanic')
+  #   fill_in('prompt[movie_b]', :with => 'Seven')
+  #   click_button('Create')
+  #   expect(page).to have_content('Prompt successfully created!')
+  # end
+
+  it 'fails to create a prompt' do
+    Prompt.destroy_all
     visit ('/signin')
     fill_in(:email, :with => 'test@test.com')
     fill_in(:password, :with => 123456)
     click_button('Sign in')
     visit new_prompt_path
     expect(page).to have_content('test@test.com')
-    fill_in('prompt[movie_a]', :with => 'Titanic')
-    fill_in('prompt[movie_b]', :with => 'Seven')
     click_button('Create')
-    expect(page).to have_content('Prompt successfully created!')
+    expect(page).to have_content('Please fill out all fields')
   end
 
 end

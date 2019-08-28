@@ -2,6 +2,9 @@ class Prompt < ApplicationRecord
   include API
   has_many :posts, dependent: :destroy
 
+  validates :movie_a, presence:true
+  validates :movie_b, presence:true
+
   def self.random_prompt
     movies_array = File.foreach('movies.txt').map { |line| line.split(", \n") }
     random_movie = movies_array[rand(0..(movies_array.length-1))]

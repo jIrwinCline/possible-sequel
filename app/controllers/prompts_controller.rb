@@ -21,7 +21,8 @@ class PromptsController < ApplicationController
     movie_two = params["prompt"]["movie_b"]
     response_one = JSON.parse(API::Interface.call_by_title(movie_one))
     response_two = JSON.parse(API::Interface.call_by_title(movie_two))
-    @prompt = Prompt.create(movie_a: {
+    if params["prompt"]["movie_a"] != "" && params["prompt"]["movie_b"] != ""
+      @prompt = Prompt.new(movie_a: {
                               title: response_one["Title"],
                               year: response_one["Year"],
                               actors: response_one["Actors"],
@@ -34,12 +35,16 @@ class PromptsController < ApplicationController
                               plot: response_two["Plot"],
                               poster: response_two["Poster"]}
                             )
-    if @prompt.save
-      flash[:notice] = "Prompt successfully created!"
-      redirect_to prompts_path
+      if @prompt.save
+        flash[:notice] = "Prompt successfully created!"
+        redirect_to prompts_path
+      else
+        flash[:alert] = "Prompt was not created!"
+        redirect_to new_prompt_path
+      end
     else
       flash[:alert] = "Please fill out all fields"
-      render :new
+      redirect_to new_prompt_path
     end
   end
 
@@ -80,9 +85,9 @@ class PromptsController < ApplicationController
 
 
 
-  private
-  def prompt_params
-    params.require(:prompt).permit(:movie_a_url, :movie_b_url)
-  end
+  # private
+  # def prompt_params
+  #   params.require(:prompt).permit(:movie_a_url, :movie_b_url)
+  # end
 
 end
