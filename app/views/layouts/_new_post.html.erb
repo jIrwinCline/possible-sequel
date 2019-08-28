@@ -1,7 +1,5 @@
-<h1>Add a new post:</h1>
-
 <%= form_for [@prompt, @post] do |f| %>
 <%= f.label :body %>
-<%= f.text_area :body, :value => nil %>
+<%= f.text_area :body %>
 <p><%= f.submit %></p>
 <% end %>
