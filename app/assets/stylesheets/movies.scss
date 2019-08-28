@@ -1,3 +1,13 @@
-// Place all the styles related to the movies controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.movie-title {
+  color: #000000;
+}
+
+@media (min-width: 701px) {
+  textarea {
+    min-width: 360px;
+  }
+}
+
+@media (max-width: 700px) {
+  
+}

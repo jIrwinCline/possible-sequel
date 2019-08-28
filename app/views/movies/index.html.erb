@@ -1,6 +1,6 @@
 <% content_for :showcase do %>
 <div class="headline">
-  <h2>Possible Sequel</h2>
+  <h2>How is <span class="movie-title"><%= @title_one %></span> the Possible Sequel to <span class="movie-title"><%= @title_two %></span> ?</h2>
 </div>
 <div class ="form">
   <%= form_for [@prompt, @post] do |f| %>
@@ -12,6 +12,7 @@
   <h3>Answers</h3>
    <% @answers.each do |answer| %>
     <p>"<%= answer["body"] %>"</p>
+    <p>Votes: <span><%= answer["votes"] %></span></p>
     <p>Vote</p>
    <% end %>
 </div>
@@ -19,7 +20,9 @@
 
 <% content_for :movie_one do %>
   <div class="top-box top-box-a">
-    <%= image_tag @poster_one %>
+    <% if @poster_one != "N/A" %>
+      <%= image_tag @poster_one %>
+    <% end %>
     <h1>Title:</h1> <p><%= @title_one %></p>
     <h2>Actors:</h2> <p><%= @actors_one %></p>
     <h2>Plot:</h2> <p><%= @plot_one %></p>
@@ -29,7 +32,9 @@
 
 <% content_for :movie_two do %>
   <div class="top-box top-box-b">
-    <%= image_tag @poster_two %>
+    <% if @poster_two != "N/A" %>
+      <%= image_tag @poster_two %>
+    <% end %>
     <h1>Title:</h1> <p><%= @title_two %></p>
     <h2>Actors:</h2> <p><%= @actors_two %></p>
     <h2>Plot:</h2> <p><%= @plot_two %></p>
