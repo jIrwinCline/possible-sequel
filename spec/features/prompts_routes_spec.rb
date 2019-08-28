@@ -10,17 +10,23 @@ describe 'failed prompts routes' do
 end
 
 describe 'prompt routes' do
-
   before :all do
+
     visit ('/signout')
     User.destroy_all
-    FactoryBot.find_definitions
     FactoryBot.create(:user)
     visit ('/signin')
     fill_in(:email, :with => 'test@test.com')
     fill_in(:password, :with => 123456)
     click_button('Sign in')
   end
+
+  # before :all do
+  #   visit new_prompt_path
+  #   fill_in('prompt[movie_a]', :with => 'Toy Story')
+  #   fill_in('prompt[movie_b]', :with => 'Batman')
+  #   click_button('Create')
+  # end
 
   after :each do
     visit ('/signout')
@@ -45,7 +51,6 @@ describe 'prompt routes' do
   # end
 
   it 'fails to create a prompt' do
-    Prompt.destroy_all
     visit ('/signin')
     fill_in(:email, :with => 'test@test.com')
     fill_in(:password, :with => 123456)
