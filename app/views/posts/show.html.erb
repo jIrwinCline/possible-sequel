@@ -1,5 +1,7 @@
-<h1>Post <%= @post.id %></h1>
+<h1>Movie 1: <%= @prompt.movie_a["title"]%></h1>
+<h1>Movie 2: <%= @prompt.movie_b["title"]%></h1>
 <h3><%= @post.body %></h3>
+
 
 <p><%= link_to "Edit post", edit_prompt_post_path(@prompt, @post) %></p>
 <p><%= link_to "Delete post", prompt_post_path(@prompt, @post),

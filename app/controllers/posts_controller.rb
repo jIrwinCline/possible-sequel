@@ -40,6 +40,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def upvote
+      ActiveRecord::Base.connection.execute("SELECT SUM(votes + 1) FROM posts WHERE post_id = #{self.id}")
+  end
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
