@@ -37,6 +37,11 @@ header {
   text-align: right;
 }
 
+textarea {
+  width: 300px;
+  height: 5em;
+}
+
 .btn {
   background: var(--dark);
   color: var(--light);
@@ -99,7 +104,8 @@ img {
   background-size: cover;
   background-position: center;
   padding: 3rem;
-  display: flex;
+  padding-top: 200px;
+  // display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: center;
