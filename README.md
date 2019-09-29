@@ -35,10 +35,13 @@ _A web-based game created using OMDB, a movies api. It takes common links betwee
 
 _xxx._
 
-## Link to GitHub Pages
+## Link to code and hosted site
 
 _Link to GitHub repo:_
 [Possible Sequel](https://github.com/jIrwinCline/possible-sequel.git)
+
+_Link to Site:_
+(https://www.possiblesequel.com)
 
 ## Known Bugs
 
