@@ -41,7 +41,7 @@ _Link to GitHub repo:_
 [Possible Sequel](https://github.com/jIrwinCline/possible-sequel.git)
 
 _Link to Site:_
-(https://possiblesequel.com)
+possiblesequel.com
 
 ## Known Bugs
 
